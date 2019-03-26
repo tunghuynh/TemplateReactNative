@@ -38,8 +38,8 @@ class Dardboard extends React.Component {
                     <Text style={styles.text}>
                         Book your next trip by clicking the button below.
                     </Text>
-                    <Button
-                        title="Go to Apps"
+                    <Button 
+                        title="Go to Apps 1" 
                         style={styles.button}
                         onPress={() => {
                             this.props.navigateTo('Apps');
