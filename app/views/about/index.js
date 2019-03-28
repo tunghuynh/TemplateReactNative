@@ -7,14 +7,14 @@ import {
     Button
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { navigateTo } from '../../reducers/actions';
 import styles from './About.styles';
 
-const About = ({ activeRoute, navigateTo }) => (
+// const About = ({ activeRoute, navigateTo }) => (
+export default class About extends React.Component {
+    render() {
+        return (
     <ScrollView contentContainerStyle={styles.view}>
-        <Text style={styles.h1}>{activeRoute.name}</Text>
+        {/*<Text style={styles.h1}>{activeRoute.name}</Text>*/}
         <Text style={[styles.text, styles.p]}>This is the third version of my React Native template. It is a
             sidemenu boilerplate for Android. It has some awesome features such as the new <Text onPress={() =>
                 Linking.openURL('https://reactnavigation.org/')}
@@ -53,30 +53,12 @@ const About = ({ activeRoute, navigateTo }) => (
         <Button
             title="Book your trip"
             style={styles.button}
-            onPress={() => { navigateTo('Apps'); }}
+            onPress={() => { this.props.navigation.navigate('Apps'); }}
         />
     </ScrollView>
-);
+        );
+    }
+}
+// );
 
-About.propTypes = {
-    activeRoute: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        screen: PropTypes.any.isRequired,
-        icon: PropTypes.string.isRequired,
-    }).isRequired,
-    navigateTo: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = state => ({
-    activeRoute: state.routes.activeRoute,
-});
-
-const mapDispatchToProps = dispatch => ({
-    navigateTo: routeName => { dispatch(navigateTo(routeName)); },
-});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(About);
-
+// export default About;
