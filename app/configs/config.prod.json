@@ -1,0 +1,10 @@
+{
+  "appConfigProd": {
+    "TEST": false,
+    "api": {
+      "url": "http://10.15.155.78/restapi.php",
+      "user": "tunghuynh",
+      "pass": "123456"
+    }
+  }
+}

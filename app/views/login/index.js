@@ -6,10 +6,9 @@ import {
     Text,
     Button,
 } from 'react-native';
-import translate, {getCurrentLocale, setLocale} from '../../i18n';
 import styles from './Login.styles';
 import TextInputIcon from '../../components/TextInputIcon'
-import {displayName} from '../../../app.json';
+import Common from '../../common';
 
 export default class Login extends React.Component {
     static navigationOptions = {
@@ -24,19 +23,19 @@ export default class Login extends React.Component {
                 <Button
                     style={styles.btnLanguage}
                     onPress={() => {
-                        if (getCurrentLocale() == 'vi') {
+                        if (Common.i18n.getCurrentLocale() == 'vi') {
                             this.setState({});
-                            setLocale('en');
+                            Common.i18n.setLocale('en');
                         } else {
                             this.setState({});
-                            setLocale('vi');
+                            Common.i18n.setLocale('vi');
                         }
                     }}
-                    title={getCurrentLocale() == 'vi' ? 'English' : 'Tiếng Việt'}/>
+                    title={Common.i18n.getCurrentLocale() == 'vi' ? 'English' : 'Tiếng Việt'}/>
                 <Image style={styles.logo}
                        source={require('../../assets/images/react_logo.png')}
                 />
-                <Text style={styles.displayName}>{displayName.toUpperCase()}</Text>
+                <Text style={styles.displayName}>{Common.App.displayName.toUpperCase()}</Text>
             </View>
             <ScrollView contentContainerStyle={styles.view}>
                 <TextInputIcon iconName="account" color="#fff"

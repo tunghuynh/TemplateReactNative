@@ -6,8 +6,8 @@ import {
     Button,
     ImageBackground,
 } from 'react-native';
-import translate, {getCurrentLocale, setLocale} from '../../i18n';
 import styles from './Dardboard.styles';
+import Common from "../../common";
 
 const backgroundImage = require('../../assets/images/bg_dardboard.jpg');
 
@@ -21,23 +21,23 @@ export default class Dardboard extends React.Component {
                 <ScrollView contentContainerStyle={styles.view}>
                     <Button
                         onPress={() => {
-                            if (getCurrentLocale() == 'vi') {
+                            if (Common.i18n.getCurrentLocale() == 'vi') {
                                 this.setState({});
-                                setLocale('en');
+                                Common.i18n.setLocale('en');
                             } else {
                                 this.setState({});
-                                setLocale('vi');
+                                Common.i18n.setLocale('vi');
                             }
                         }}
-                        title={getCurrentLocale() == 'vi' ? 'English' : 'Tiếng Việt'}/>
-                    <Text style={styles.welcome}>{translate('common.label.welcome', {name: 'Tùng Huynh'})}</Text>
-                    <Text style={styles.instructions}>{translate('common.label.processing')}</Text>
+                        title={Common.i18n.getCurrentLocale() == 'vi' ? 'English' : 'Tiếng Việt'}/>
+                    <Text style={styles.welcome}>{Common.i18n.translate('common.label.welcome', {name: 'Tùng Huynh'})}</Text>
+                    <Text style={styles.instructions}>{Common.i18n.translate('common.label.processing')}</Text>
                     {/*<Text style={styles.header1}>{this.props.activeRoute.name}</Text>*/}
                     <Text style={styles.text}>
                         Book your next trip by clicking the button below.
                     </Text>
                     <Button 
-                        title="Go to Apps 1" 
+                        title="Go to Apps"
                         style={styles.button}
                         onPress={() => {
                             this.props.navigation.navigate('Apps');

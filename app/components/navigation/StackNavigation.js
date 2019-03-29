@@ -1,11 +1,9 @@
 import React from 'react';
-import DardboardScreen from "../../views/dardboard";
-import AppsScreen from "../../views/apps";
-import SettingsScreen from "../../views/settings";
-import AboutScreen from "../../views/about";
+import menu from '../../configs/menu';
 import Icon from "react-native-vector-icons/FontAwesome";
 import { View, TouchableOpacity } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+import Common from '../../common';
 
 class TouchableMenuIcon extends React.Component {
 
@@ -22,37 +20,31 @@ class TouchableMenuIcon extends React.Component {
         );
     }
 }
+let routes = {};
+
+menu.forEach((item) => {
+    if (item.key != undefined && item.visible) {
+        if (item.showMenuIcon) {
+            routes[item.key] = {
+                screen: item.screen,
+                navigationOptions: ({navigation}) => ({
+                    headerTitle: Common.i18n.translate(item.key),
+                    headerLeft: <TouchableMenuIcon navigationProps={navigation}/>
+                })
+            }
+        }else{
+            routes[item.key] = {
+                screen: item.screen,
+                navigationOptions: ({navigation}) => ({
+                    headerTitle: Common.i18n.translate(item.key)
+                })
+            }
+        }
+    }
+});
 
 export default createStackNavigator(
-    {
-        Dardboard: {
-            screen: DardboardScreen,
-            navigationOptions: ({ navigation }) => ({
-                headerTitle: 'Dardboard',
-                headerLeft: <TouchableMenuIcon navigationProps={ navigation }/>
-            })
-        },
-        Apps: {
-            screen: AppsScreen,
-            navigationOptions: () => ({
-                headerTitle: 'Apps',
-            })
-        },
-        Settings: {
-            screen: SettingsScreen,
-            navigationOptions: () => ({
-                headerTitle: 'Settings',
-            })
-        },
-        About: {
-            screen: AboutScreen,
-            navigationOptions: () => ({
-                headerTitle: 'About',
-            })
-        },
-    },
-    {
+    routes, {
         initialRouteName: 'Dardboard',
-
     }
 );
