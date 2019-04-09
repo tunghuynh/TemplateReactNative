@@ -9,25 +9,29 @@ export default [
         icon: "",
         screen: DardboardScreen,
         visible: true,
-        showMenuIcon: true
+        showMenuIcon: true,
+        group: 1
     },
     {
         key: "Apps",
         icon: "",
         screen: AppsScreen,
-        visible: true,
-        showMenuIcon: true
+        visible: false,
+        showMenuIcon: true,
+        group: 1
     },
     {
         key: "Settings",
         icon: "",
         screen: SettingsScreen,
         visible: true,
+        group: 2
     },
     {
         key: "About",
         icon: "",
         screen: AboutScreen,
         visible: true,
+        group: 2
     },
 ]

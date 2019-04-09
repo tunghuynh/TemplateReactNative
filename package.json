@@ -9,7 +9,7 @@
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "16.8.3",
-    "react-native": "0.58.6",
+    "react-native": "0.59.4",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-i18n": "^2.0.15",
     "react-native-material-ui": "^1.30.1",
