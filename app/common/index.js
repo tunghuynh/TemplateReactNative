@@ -10,6 +10,7 @@ const Common = {
         translate,
         getCurrentLocale,
         setLocale
-    }
+    },
+
 };
 export default Common;

@@ -4,11 +4,12 @@ import {
     View, Image,
     ScrollView,
     Text,
-    Button,
 } from 'react-native';
 import styles from './Login.styles';
 import TextInputIcon from '../../components/TextInputIcon'
 import Common from '../../common';
+import {Button, ThemeContext, getTheme} from "react-native-material-ui";
+import AppStyle from "../../theme";
 
 export default class Login extends React.Component {
     static navigationOptions = {
@@ -18,37 +19,39 @@ export default class Login extends React.Component {
 
     render() {
         return (
-        <View style={styles.container}>
-            <View style={styles.cover}>
-                <Button
-                    style={styles.btnLanguage}
-                    onPress={() => {
-                        if (Common.i18n.getCurrentLocale() == 'vi') {
-                            this.setState({});
-                            Common.i18n.setLocale('en');
-                        } else {
-                            this.setState({});
-                            Common.i18n.setLocale('vi');
-                        }
-                    }}
-                    title={Common.i18n.getCurrentLocale() == 'vi' ? 'English' : 'Tiếng Việt'}/>
-                <Image style={styles.logo}
-                       source={require('../../assets/images/react_logo.png')}
-                />
-                <Text style={styles.displayName}>{Common.App.displayName.toUpperCase()}</Text>
-            </View>
-            <ScrollView contentContainerStyle={styles.view}>
-                <TextInputIcon iconName="account" color="#fff"
-                               placeholder="Username"
-                               style={{marginTop: 10}}/>
-                <TextInputIcon iconName="key" color="#fff"
-                               placeholder="Password"
-                               secureTextEntry={true}
-                               style={{marginTop: 20}}/>
-                <Text style={[styles.text, {marginTop: 20}]}>Forgot Password?</Text>
-                <Button title="Login" onPress={this._signInAsync} style={{marginTop: 20}}/>
-            </ScrollView>
-        </View>
+            <ThemeContext.Provider value={getTheme(AppStyle.uiTheme)}>
+                <View style={styles.container}>
+                    <View style={styles.cover}>
+                        <Button
+                            style={styles.btnLanguage}
+                            onPress={() => {
+                                if (Common.i18n.getCurrentLocale() == 'vi') {
+                                    this.setState({});
+                                    Common.i18n.setLocale('en');
+                                } else {
+                                    this.setState({});
+                                    Common.i18n.setLocale('vi');
+                                }
+                            }}
+                            text={Common.i18n.getCurrentLocale() == 'vi' ? 'English' : 'Tiếng Việt'}/>
+                        <Image style={styles.logo}
+                               source={require('../../assets/images/react_logo.png')}
+                        />
+                        <Text style={styles.displayName}>{Common.App.displayName.toUpperCase()}</Text>
+                    </View>
+                    <ScrollView contentContainerStyle={styles.view}>
+                        <TextInputIcon iconName="account" color="#fff"
+                                       placeholder="Username"
+                                       style={{marginTop: 10}}/>
+                        <TextInputIcon iconName="key" color="#fff"
+                                       placeholder="Password"
+                                       secureTextEntry={true}
+                                       style={{marginTop: 20}}/>
+                        <Text style={[styles.text, {marginTop: 20}]}>Forgot Password?</Text>
+                        <Button text="Login" onPress={this._signInAsync} style={{marginTop: 20}}/>
+                    </ScrollView>
+                </View>
+            </ThemeContext.Provider>
         );
     }
 

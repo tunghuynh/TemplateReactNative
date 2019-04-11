@@ -1,35 +1,35 @@
 import AboutScreen from "../views/about";
 import SettingsScreen from "../views/settings";
 import AppsScreen from "../views/apps";
-import DardboardScreen from "../views/dardboard";
+import DashboardScreen from "../views/dashboard";
 
 export default [
     {
-        key: "Dardboard",
-        icon: "",
-        screen: DardboardScreen,
+        key: "Dashboard",
+        icon: "dashboard",
+        screen: DashboardScreen,
         visible: true,
         showMenuIcon: true,
         group: 1
     },
     {
         key: "Apps",
-        icon: "",
+        icon: "apps",
         screen: AppsScreen,
-        visible: false,
+        visible: true,
         showMenuIcon: true,
         group: 1
     },
     {
         key: "Settings",
-        icon: "",
+        icon: "settings",
         screen: SettingsScreen,
         visible: true,
         group: 2
     },
     {
         key: "About",
-        icon: "",
+        icon: "info",
         screen: AboutScreen,
         visible: true,
         group: 2

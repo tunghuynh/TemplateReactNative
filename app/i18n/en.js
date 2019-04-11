@@ -11,10 +11,16 @@ export default {
             processing: "Processing..."
         }
     },
+    settings: {
+        language: "Language",
+        notify: "Notification",
+        appColor: "App color"
+    },
     menu: {
-        Dardboard: "Dardboard",
+        Dashboard: "Dashboard",
         Apps: "Apps",
         About: "About",
-        Settings: "Settings"
+        Settings: "Settings",
+        Logout: "Logout"
     }
 };

@@ -1,31 +1,54 @@
 import {StyleSheet} from "react-native";
+import AppStyle from "../../theme";
 
 const styles = StyleSheet.create({
-    view: {
+    container: {
         flex: 1,
-        alignItems: 'flex-start',
-        marginTop: 20,
-        marginBottom: 20,
-        padding: 20
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    h1: {
-        fontSize: 22,
-        alignSelf: 'center',
-        marginBottom: 20
+    accountContainer: {
+        marginTop: 40,
+        marginBottom: 50,
+        paddingVertical: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        borderColor: '#ccc',
+        flexDirection: 'row',
     },
-    text: {
-        fontSize: 16,
-        lineHeight: 24,
-        marginBottom: 10
+    accountImage: {
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+        borderWidth: 1,
+        borderColor: AppStyle.global.primaryColor,
+        marginHorizontal: 20,
     },
-    p: {
-        textAlign: 'left',
-        marginBottom: 20
+    avatarContainer: {
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+        marginLeft: 20,
+        backgroundColor: AppStyle.global.primaryColor,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    linkCredits: {
-        fontStyle: 'italic',
-        color: '#2962FF'
-    }
+    avatarContent: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        color: '#fff'
+    },
+    accountTitle: {
+        color: 'black',
+        fontSize: 24,
+        marginLeft: 20
+    },
+    accountSubtitle: {
+        color: '#999',
+        fontSize: 14,
+        marginLeft: 20
+    },
 });
 
 export default styles;

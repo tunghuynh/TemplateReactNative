@@ -16,6 +16,7 @@ import Login from "./app/views/login";
 import StackNavigation from "./app/components/navigation/StackNavigation";
 import SideMenu from "./app/components/navigation/SideMenu";
 
+
 class SplashScreen extends React.Component {
     constructor() {
         super();
@@ -32,8 +33,8 @@ class SplashScreen extends React.Component {
             <View style={{
                 flex: 1, alignItems: 'center', justifyContent: 'center',
             }}>
-                <ActivityIndicator />
-                <StatusBar barStyle="default" />
+                <ActivityIndicator/>
+                <StatusBar barStyle="default"/>
                 <Text style={{color: '#fff'}}>Đang tải dữ liệu</Text>
             </View>
         );
@@ -50,8 +51,8 @@ const AuthStack = createStackNavigator({
 });
 
 const MainDrawer = createDrawerNavigator(
-    { RootStack: StackNavigation },
-    { contentComponent: SideMenu }
+    {RootStack: StackNavigation},
+    {contentComponent: SideMenu}
 );
 
 export default createAppContainer(createSwitchNavigator(

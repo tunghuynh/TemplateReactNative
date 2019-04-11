@@ -1,6 +1,10 @@
 {
   "app": {
     "name": "TemplateReactNative",
-    "displayName": "Template React Native"
+    "displayName": "Template React Native",
+    "account": {
+      "username": "Tùng Huynh",
+      "email": "sondt18@fpt.com.vn"
+    }
   }
 }

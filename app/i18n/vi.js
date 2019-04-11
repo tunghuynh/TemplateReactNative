@@ -11,10 +11,16 @@ export default {
             "processing": "Đang xử lý..."
         }
     },
+    settings: {
+        language: "Ngôn ngữ",
+        notify: "Thông báo",
+        appColor: "Màu ứng dụng"
+    },
     menu: {
-        Dardboard: "Tổng quan",
+        Dashboard: "Tổng quan",
         Apps: "Ứng dụng",
         About: "Thông tin",
-        Settings: "Cài đặt"
+        Settings: "Cài đặt",
+        Logout: "Đăng xuất"
     }
 };
