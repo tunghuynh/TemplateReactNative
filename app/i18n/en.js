@@ -13,8 +13,11 @@ export default {
     },
     settings: {
         language: "Language",
-        notify: "Notification",
-        appColor: "App color"
+        notification: "Notification",
+        appColor: "App color",
+        general: "General",
+        generalFooter: "General settings for application",
+        appNotify: "Apps & Notification"
     },
     menu: {
         Dashboard: "Dashboard",

@@ -13,8 +13,11 @@ export default {
     },
     settings: {
         language: "Ngôn ngữ",
-        notify: "Thông báo",
-        appColor: "Màu ứng dụng"
+        notification: "Thông báo",
+        appColor: "Màu ứng dụng",
+        general: "Chung",
+        generalFooter: "Cài đặt chung cho ứng dụng",
+        appNotify: "Ứng dụng & Thông báo"
     },
     menu: {
         Dashboard: "Tổng quan",
