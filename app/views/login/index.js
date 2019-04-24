@@ -8,7 +8,7 @@ import {
 import styles from './Login.styles';
 import TextInputIcon from '../../components/TextInputIcon'
 import Common from '../../common';
-import {Button, ThemeContext, getTheme} from "react-native-material-ui";
+import {Button, ThemeContext, getTheme, COLOR} from "react-native-material-ui";
 import AppStyle from "../../theme";
 
 export default class Login extends React.Component {
@@ -22,18 +22,24 @@ export default class Login extends React.Component {
             <ThemeContext.Provider value={getTheme(AppStyle.uiTheme)}>
                 <View style={styles.container}>
                     <View style={styles.cover}>
-                        <Button
-                            style={styles.btnLanguage}
-                            onPress={() => {
-                                if (Common.i18n.getCurrentLocale() == 'vi') {
-                                    this.setState({});
-                                    Common.i18n.setLocale('en');
-                                } else {
-                                    this.setState({});
-                                    Common.i18n.setLocale('vi');
-                                }
-                            }}
-                            text={Common.i18n.getCurrentLocale() == 'vi' ? 'English' : 'Tiếng Việt'}/>
+                        <View style={styles.vLanguage}>
+                            <Button
+                                style={{
+                                    text: {
+                                        color: AppStyle.global.contentLight
+                                    }
+                                }}
+                                onPress={() => {
+                                    if (Common.i18n.getCurrentLocale() == 'vi') {
+                                        this.setState({});
+                                        Common.i18n.setLocale('en');
+                                    } else {
+                                        this.setState({});
+                                        Common.i18n.setLocale('vi');
+                                    }
+                                }}
+                                text={Common.i18n.getCurrentLocale() == 'vi' ? 'EN' : 'VI'}/>
+                        </View>
                         <Image style={styles.logo}
                                source={require('../../assets/images/react_logo.png')}
                         />
@@ -41,14 +47,21 @@ export default class Login extends React.Component {
                     </View>
                     <ScrollView contentContainerStyle={styles.view}>
                         <TextInputIcon iconName="account" color="#fff"
-                                       placeholder="Username"
+                                       placeholder={Common.i18n.translate('login.username')}
                                        style={{marginTop: 10}}/>
                         <TextInputIcon iconName="key" color="#fff"
-                                       placeholder="Password"
+                                       placeholder={Common.i18n.translate('login.password')}
                                        secureTextEntry={true}
                                        style={{marginTop: 20}}/>
-                        <Text style={[styles.text, {marginTop: 20}]}>Forgot Password?</Text>
-                        <Button text="Login" onPress={this._signInAsync} style={{marginTop: 20}}/>
+                        <Text style={[styles.text, {marginTop: 20}]}>{Common.i18n.translate('login.forgotPass')}</Text>
+                        <Button raised primary text={Common.i18n.translate('login.login')}
+                                onPress={this._signInAsync}
+                                style={{
+                                    container: {
+                                        width: '100%',
+                                        backgroundColor: AppStyle.global.primaryDark
+                                    }
+                                }}/>
                     </ScrollView>
                 </View>
             </ThemeContext.Provider>

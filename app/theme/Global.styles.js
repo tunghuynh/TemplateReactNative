@@ -1,13 +1,15 @@
 // Material Design Color System
 // https://material.io/design/color/the-color-system.html
 
-import {COLOR} from "react-native-material-ui";
-
-
 export const global = {
-    primaryColor: '#4d8b4a',
-    secondaryLight: '#c6dcca',
-    accentColor: COLOR.pink500,
+    primaryDark: '#0e4040',
+    primaryColor: '#226666',
+    secondaryLight: '#669999',
+    accentColor: '#9a334f',
+    contentLight: '#dfe6e4',
+    contentDark: '#313131',
+    linkColor: '#2687db',
+    disableColor: '#aaa',
 };
 
 export const uiTheme = {

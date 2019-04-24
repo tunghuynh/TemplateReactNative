@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import AppStyle from "../../theme";
 
 const styles = StyleSheet.create({
     view: {
@@ -19,11 +20,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         marginBottom: 20
     },
-    linkCredits: {
-        fontStyle: 'italic',
-        color: '#2962FF'
-    },
-    social: {
+    web: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-start',
@@ -33,13 +30,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginBottom: 4,
     },
-    position: {
-        fontSize: 16,
-        marginBottom: 10,
-    },
     link: {
         fontSize: 16,
-        color: '#2962FF'
+        color: AppStyle.global.linkColor
     }
 });
 export default styles;

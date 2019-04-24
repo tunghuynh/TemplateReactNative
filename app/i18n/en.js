@@ -19,11 +19,18 @@ export default {
         generalFooter: "General settings for application",
         appNotify: "Apps & Notification"
     },
+    login: {
+        username: "Username",
+        password: "Password",
+        login: "Login",
+        forgotPass: "Forgot Password?"
+    },
     menu: {
         Dashboard: "Dashboard",
         Apps: "Apps",
         About: "About",
         Settings: "Settings",
-        Logout: "Logout"
+        Logout: "Logout",
+        Notifications: "Notifications"
     }
 };

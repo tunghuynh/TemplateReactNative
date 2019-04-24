@@ -1,29 +1,37 @@
 import {StyleSheet} from "react-native";
-import {primaryLight} from '../../theme/Global.styles';
+import {global} from '../../theme/Global.styles';
+import AppStyle from "../../theme";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         resizeMode: 'cover',
-        backgroundColor: primaryLight,
+        backgroundColor: global.primaryColor,
     },
     cover: {
-        backgroundColor: '#454545',
-        height: 300,
+       // flex: 1,
+        backgroundColor: AppStyle.global.contentDark,
         alignItems: 'center',
+    },
+    vLanguage: {
+        flex: 1,
+        width: '100%',
+        alignItems: 'flex-end'
     },
     btnLanguage: {
 
     },
     logo: {
+        marginTop: 50,
         width: 250,
         height: 250,
-        tintColor: primaryLight,
+        tintColor: AppStyle.global.contentLight,
     },
     displayName: {
         fontSize: 25,
-        color: primaryLight,
-        fontWeight: 'bold'
+        color: AppStyle.global.contentLight,
+        fontWeight: 'bold',
+        marginBottom: 20,
     },
     view: {
         flex: 1,
@@ -34,7 +42,7 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     text: {
-        color: '#fff',
+        color: AppStyle.global.contentLight,
         marginTop: 10,
         marginBottom: 20,
         textAlign: 'right',

@@ -8,7 +8,7 @@ import menu from '../../configs/menu';
 import Common from "../../common";
 
 
-import {COLOR, ThemeContext, getTheme, Toolbar, Drawer, Avatar} from 'react-native-material-ui';
+import {ThemeContext, getTheme, Toolbar, Drawer, Avatar} from 'react-native-material-ui';
 import Container from "./Container";
 import {cutName} from "../../common/functions";
 
@@ -73,7 +73,7 @@ export default class SideMenu extends Component {
                                 items={menu
                                     .filter(item => item.visible && item.group == 1)
                                     .map((item, index) => ({
-                                        icon: item.icon,
+                                        icon: item.icon!=''?item.icon:'lens',
                                         key: index,
                                         value: Common.i18n.translate('menu.' + item.key),
                                         active: this.state.active == item.key,
@@ -94,7 +94,7 @@ export default class SideMenu extends Component {
                                 items={menu
                                     .filter(item => item.visible && item.group == 2)
                                     .map((item, index) => ({
-                                        icon: item.icon,
+                                        icon: item.icon!=''?item.icon:'lens',
                                         key: index,
                                         value: Common.i18n.translate('menu.' + item.key),
                                         active: this.state.active == item.key,

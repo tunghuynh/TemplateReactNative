@@ -19,11 +19,18 @@ export default {
         generalFooter: "Cài đặt chung cho ứng dụng",
         appNotify: "Ứng dụng & Thông báo"
     },
+    login: {
+        username: "Tên đăng nhập",
+        password: "Mật khẩu",
+        login: "Đăng nhập",
+        forgotPass: "Quên mật khẩu?"
+    },
     menu: {
         Dashboard: "Tổng quan",
         Apps: "Ứng dụng",
         About: "Thông tin",
         Settings: "Cài đặt",
-        Logout: "Đăng xuất"
+        Logout: "Đăng xuất",
+        Notifications: "Thông báo"
     }
 };

@@ -3,68 +3,42 @@ import {
     View,
     ScrollView,
     Text,
-    Linking,
-    Button
+    Linking
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './About.styles';
 import Common from "../../common";
-import {ThemeContext, getTheme, Toolbar} from "react-native-material-ui";
+import {Button, ThemeContext, getTheme, Toolbar} from "react-native-material-ui";
 import AppStyle from "../../theme";
+import ToolbarNav from "../../components/ToolbarNav";
 
-// const About = ({ activeRoute, navigateTo }) => (
 export default class About extends React.Component {
     render() {
         return (
             <ThemeContext.Provider value={getTheme(AppStyle.uiTheme)}>
                 <View style={{flex: 1}}>
-                    <Toolbar
-                        leftElement="arrow-back"
-                        centerElement={Common.i18n.translate('menu.About')}
-                        onLeftElementPress={() => this.props.navigation.goBack()}
-                    />
+                    <ToolbarNav showMenu={false} keyMenu="About" navigation={this.props.navigation}/>
                     <ScrollView contentContainerStyle={styles.view}>
                         {/*<Text style={styles.h1}>{activeRoute.name}</Text>*/}
-                        <Text style={[styles.text, styles.p]}>This is the third version of my React Native template. It
-                            is a
-                            sidemenu boilerplate for Android. It has some awesome features such as the new <Text
-                                onPress={() =>
-                                    Linking.openURL('https://reactnavigation.org/')}
-                                style={styles.linkCredits}
-                            >React Navigation</Text> component, as well the awesom <Text onPress={() =>
-                                Linking.openURL('https://github.com/oblador/react-native-vector-icons')}
-                                                                                         style={styles.linkCredits}
-                            >React Native Vector Icons, </Text> Android overflow menu, e much more.
+                        <Text style={[styles.text, styles.p]}>This is first Template React Native.
                         </Text>
                         <Text style={[styles.text, styles.p]}>You can use this project as a
-                            starting point for yours, as well as collaborate with improvements
-                            by github pull requests. This is a simple prototype and can be
+                            starting point for yours. This is a simple prototype and can be
                             modified according to your needs.</Text>
-                        <Text style={[styles.text, styles.p]}>Thank you for trying my template.</Text>
-                        <Text style={styles.signature}>Pablo Rodrigo Darde</Text>
-                        <Text style={styles.position}>Front end engineer</Text>
-                        <View style={styles.social}>
-                            <Icon name="logo-linkedin" size={30} color="#2962FF" style={{marginRight: 10}}/>
+                        <Text style={styles.signature}>Tùng Huynh</Text>
+                        <View style={styles.web}>
+                            <Icon name="web" size={30} color={AppStyle.global.linkColor} style={{marginRight: 10}}/>
                             <Text onPress={() =>
-                                Linking.openURL('https://www.linkedin.com/in/pablodarde')}
+                                Linking.openURL('http://tunghuynh.net')}
                                   style={styles.link}
                             >
-                                www.linkedin.com/in/pablodarde
-                            </Text>
-                        </View>
-                        <View style={styles.social}>
-                            <Icon name="logo-github" size={30} color="#2962FF" style={{marginRight: 10}}/>
-                            <Text onPress={() =>
-                                Linking.openURL('https://github.com/darde')}
-                                  style={styles.link}
-                            >
-                                https://github.com/darde
+                                http://tunghuynh.net
                             </Text>
                         </View>
 
                         <Button
-                            title="Book your trip"
-                            style={styles.button}
+                            primary raised
+                            text="Goto Apps"
                             onPress={() => {
                                 this.props.navigation.navigate('Apps');
                             }}
@@ -75,6 +49,3 @@ export default class About extends React.Component {
         );
     }
 }
-// );
-
-// export default About;

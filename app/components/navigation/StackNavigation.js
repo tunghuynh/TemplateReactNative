@@ -47,6 +47,6 @@ menu.forEach((item) => {
 
 export default createStackNavigator(
     routes, {
-        initialRouteName: 'Settings',
+        initialRouteName: 'Dashboard',
     }
 );

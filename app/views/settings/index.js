@@ -18,6 +18,7 @@ import {ThemeContext, getTheme, Toolbar, Button} from "react-native-material-ui"
 import RadioGroup from 'react-native-radio-button-group';
 import styles from "./Settings.styles";
 import {cutName} from "../../common/functions";
+import ToolbarNav from "../../components/ToolbarNav";
 
 const renderAccount = () => (
     <View style={styles.accountContainer}>
@@ -32,30 +33,25 @@ const renderAccount = () => (
         {/*<Chevron/>*/}
     </View>
 );
-var radiogroup_options = [
-    {id: 'vi', label: 'Tiếng Việt'},
-    {id: 'en', label: 'English'},
+let radiogroup_options = [
+    {id: 'vi', label: 'Tiếng Việt', labelView: 'VI'},
+    {id: 'en', label: 'English', labelView: 'EN'},
 ];
 
 export default class Settings extends React.Component {
-    settingObj = {
-        notify: true,
-        language: Common.i18n.getCurrentLocale()
-    };
 
     state = {
         refreshing: false,
         modalVisible: false,
-        setting: this.settingObj
+        setting: {
+            notify: true,
+            language: Common.i18n.getCurrentLocale()
+        }
     };
 
     constructor() {
         super();
         this._loadSettingInAsync();
-    }
-
-    setModalVisible(visible) {
-        this.setState({modalVisible: visible});
     };
 
     render() {
@@ -72,8 +68,7 @@ export default class Settings extends React.Component {
                         subtitle: Common.i18n.getCurrentLocale() == 'vi' ? 'Tiếng Việt' : 'English',
                         showDisclosureIndicator: true,
                         onPress: () => {
-                            this.state.setting.language = Common.i18n.getCurrentLocale();
-                            this.setModalVisible(true);
+                            this.setState({modalVisible: true, setting: {language: Common.i18n.getCurrentLocale()}});
                         }
                     },
                 ],
@@ -87,9 +82,8 @@ export default class Settings extends React.Component {
                         renderAccessory: () =>
                             <Switch value={this.state.setting.notify}
                                     onValueChange={() => {
-                                        this.state.setting.notify = !this.state.setting.notify;
+                                        this.setState({setting: {notify: !this.state.setting.notify}});
                                         this._saveSettingInAsync('userSetting.notify', this.state.setting.notify+"");
-                                        this.setState({});
                                     }}/>,
                     },
                     {
@@ -119,7 +113,7 @@ export default class Settings extends React.Component {
                             marginTop: -30,
                         }}
                     >
-                        {Common.App.displayName} by Tùng Huynh
+                        v1.0.0
                     </Text>
                 ),
             },
@@ -128,11 +122,7 @@ export default class Settings extends React.Component {
         return (
             <ThemeContext.Provider value={getTheme(AppStyle.uiTheme)}>
                 <View style={styles.container}>
-                    <Toolbar
-                        leftElement="arrow-back"
-                        onLeftElementPress={() => this.props.navigation.goBack()}
-                        centerElement={Common.i18n.translate('menu.Settings')}
-                    />
+                    <ToolbarNav showMenu={false} keyMenu="Settings" navigation={this.props.navigation}/>
                     <Modal
                         animationType="fade"
                         transparent={true}
@@ -145,7 +135,7 @@ export default class Settings extends React.Component {
                             alignItems: 'center', justifyContent: 'center'
                         }}
                                           onPress={() => {
-                                              this.setModalVisible(!this.state.modalVisible);
+                                              this.setState({modalVisible: false});
                                           }}>
                             <View style={{
                                 minWidth: 250, backgroundColor: 'white',
@@ -165,9 +155,12 @@ export default class Settings extends React.Component {
                                 <View style={{marginLeft: 20, marginTop: 20}}>
                                     <RadioGroup
                                         activeButtonId={this.state.setting.language}
-                                        options={radiogroup_options}
+                                        options={[
+                                            {id: 'vi', label: 'Tiếng Việt'},
+                                            {id: 'en', label: 'English'},
+                                        ]}
                                         onChange={(option) => {
-                                            this.state.setting.language = option.id;
+                                            this.setState({setting: {language: option.id}});
                                         }}
                                     />
                                 </View>
@@ -181,7 +174,7 @@ export default class Settings extends React.Component {
                                         primary
                                         text={'Cancel'}
                                         onPress={() => {
-                                            this.setModalVisible(!this.state.modalVisible);
+                                            this.setState({modalVisible: false, setting: {language: Common.i18n.getCurrentLocale()}});
                                         }}>
                                     </Button>
                                     <Button
@@ -190,7 +183,7 @@ export default class Settings extends React.Component {
                                         onPress={() => {
                                             Common.i18n.setLocale(this.state.setting.language);
                                             this._saveSettingInAsync('userSetting.language', this.state.setting.language);
-                                            this.setModalVisible(!this.state.modalVisible);
+                                            this.setState({modalVisible: false});
                                         }}>
                                     </Button>
                                 </View>
@@ -214,23 +207,21 @@ export default class Settings extends React.Component {
                 </View>
             </ThemeContext.Provider>
         )
-    }
+    };
 
     _saveSettingInAsync = async (key, value) => {
         await AsyncStorage.setItem(key, value);
     };
     _loadSettingInAsync = async () => {
-        this.setState({refreshing: true});
         const languageStore = await AsyncStorage.getItem('userSetting.language');
         if (languageStore!=undefined && languageStore!=''){
-            this.state.setting.language = languageStore;
+            this.setState({setting: {language: languageStore}});
             Common.i18n.setLocale(languageStore);
         }
         const notifyStore = await AsyncStorage.getItem('userSetting.notify');
         if (notifyStore!=undefined && notifyStore!=''){
-            this.state.setting.notify = notifyStore;
+            this.setState({setting: {notify: notifyStore}});
         }
-        this.setState({refreshing: false});
     };
 }
 
